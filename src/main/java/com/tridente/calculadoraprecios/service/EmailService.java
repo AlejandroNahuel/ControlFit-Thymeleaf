@@ -44,7 +44,7 @@ public class EmailService {
         
         mailContent+="</ul>";
         
-        var formatter = NumberFormat.getInstance();
+        NumberFormat formatter = NumberFormat.getInstance();
         formatter.setCurrency(Currency.getInstance("ARS"));
         formatter.setMinimumFractionDigits(2);
         String finalPriceStr = formatter.format(finalPrice);

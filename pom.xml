@@ -14,7 +14,7 @@
 	<name>Calculadora de precios Control Fit</name>
 	<description>Choose your services plan</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
