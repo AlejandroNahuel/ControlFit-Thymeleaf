@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--CSS Bootstrap-->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <!-- CSS Main -->
+    <link rel="stylesheet" th:href="@{css/main.css}"/>
+    <title>Template</title>
+</head>
+<body>
+    <!-- ===== Header Start ===== -->
+    <header>
+        <!-- ===== Navbar Start ===== -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark-main justify-content-between fixed-top">
+            <div class="container">
+                <!-- Brand Start -->
+                <a href="#" class="navbar-brand img-w-50">
+                    <img th:src="@{img/logo.png}" alt="Control Fit Logo" class="img-fluid"/>
+                </a>
+                <!-- Brand End -->
+                <!-- Collapse Btn Start -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collapse Btn End -->
+                <!-- Navbar Content Start -->
+                <div class="collapse navbar-collapse text-light flex-grow-0" id="navbarContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="" class="nav-link active text-reset">Inicio</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Navbar Content End -->
+            </div>
+        </nav>
+        <!-- ===== Navbar End ===== -->
+    </header>
+    <!-- ===== Header End ===== -->
+    <!-- ===== Main Content Start ===== -->
+    <div class="container pt-2 mt-5 min-vh-100">
+        <div class="row">
+            <h2 class="w-100 fw-normal text-start h2">Control Fit</h2>
+        </div>
+        <!-- ===== Form Start ===== -->
+        <form th:action="@{/form-data}" method="POST" th:object="${customer}">
+            <!-- ===== Contact Info Start ===== -->            
+            <div class="row justify-content-center g-0">
+                <div class="card col-11 mt-3 mb-3 shadow">
+                    <div class="card-header text-center text-light bg-dark-main d-flex flex-column justify-content-center">Datos de contacto</div>
+                    <div class="card-body bg-light">
+                        
+                        <!-- Nombre -->
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" name="name" id="name" class="form-control mb-3"/> 
+                        
+                        <!-- lastName -->
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <input type="text" name="lastName" id="lastName" class="form-control mb-3"/>
+                        
+                        <!-- Nombre del gimnasio -->
+                        <label for="gymName" class="form-label">Nombre del gimnasio</label>
+                        <input type="text" name="gymName" id="gymName" class="form-control mb-3"/>
+                        
+                        <!-- Email -->
+                        <label for="email" class="form-label">Email de contacto</label>
+                        <input type="text" class="form-control mb-3" name="email" id="email"/>
+                        
+                        <!-- Teléfono -->
+                        <label for="phone" class="form-label">Teléfono de contacto</label>
+                        <input type="tel" class="form-control mb-3" name="phone" id="phone"/>
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- ===== Contact Info End ===== -->
+            <!-- ===== Building Plan Start ===== -->
+            <p class="w-100 fw-light text-start h4">Armá tu plan</p>
+            <!-- ===== Cards Start ===== -->
+            <!-- ===== Card #1 ===== -->
+            <div class="row justify-content-center g-0">
+                <div class="card col-11 justify-content-center p-0 shadow">
+                    <div class="card-header text-center text-light bg-dark-main">Cupo de Socios activos</div>
+                    <div class="card-body bg-light">
+                        <div class="form-group col-9 mx-auto pb-3">
+                            <label for="range" class="form-label" id="rangeLabel">100</label>
+                            <input name="numberOfMembers" type="range" class="form-range" id="range" min="100" max="1000" step="100" value="100"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== Cards #2 - #5 ===== -->
+            <div class="row justify-content-around g-0 ">
+                <!-- Card #2 -->
+                <div class="card col-11 col-sm-5 col-lg-2 mt-3 shadow">
+                    <div class="card-header text-center text-light bg-dark-main height-headerCard d-flex flex-column justify-content-center h-40">Notificaciones por WhatsApp</div>
+                    <div class="card-body pt-4 bg-light h-60">
+                        <div class="d-flex justify-content-center mx-auto form-check">
+                            <input name="notiWhatsapp" type="checkbox" class="form-check-input me-1" id="cWhatsapp"/>
+                            <label for="cWhatsapp" class="form-check-label">Si</label>                        
+                        </div>
+                    </div>
+                </div>
+                <!-- Card #3 -->
+                <div class="card col-11 col-sm-5 col-lg-2 mt-3 shadow">
+                    <div class="card-header text-center text-light bg-dark-main height-headerCard d-flex flex-column justify-content-center h-40">App Móvil para socios</div>
+                    <div class="card-body pt-4 bg-light h-60">
+                        <div class="d-flex justify-content-center mx-auto form-check">
+                            <input name="membersApp" type="checkbox" class="form-check-input me-1" id="cSocios"/>
+                            <label for="cSocios" class="form-check-label">Si</label>                        
+                        </div>
+                    </div>
+                </div>
+                <!-- Card #4 -->
+                <div class="card col-11 col-sm-5 col-lg-2 mt-3 shadow">
+                    <div class="card-header text-center text-light bg-dark-main height-headerCard d-flex flex-column justify-content-center h-40">App Móvil para dueños</div>
+                    <div class="card-body pt-4 bg-light h-60">
+                        <div class="d-flex justify-content-center mx-auto form-check">
+                            <input name="ownersApp" type="checkbox" class="form-check-input me-1" id="cDuenios"/>
+                            <label for="cDuenios" class="form-check-label">Si</label>                        
+                        </div>
+                    </div>
+                </div>
+                <!-- Card #5 -->
+                <div class="card col-11 col-sm-5 col-lg-2 mt-3 shadow">
+                    <div class="card-header text-center text-light bg-dark-main height-headerCard d-flex flex-column justify-content-center h-40">Computadora extra</div>
+                    <div class="card-body pt-4 bg-light h-60">
+                        <div class="d-flex justify-content-center mx-auto form-check align-content-center">
+                            <input name="extraComputer" type="checkbox" class="form-check-input me-1" id="cCompuExtra"/>
+                            <label for="cCompuExtra" class="form-check-label">Si</label>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== Cards End ===== -->
+            <!-- ===== Building Plan Start ===== -->
+            <!-- ===== Final Price Star ===== -->
+            <div class="row pt-3 justify-content-center">
+                <h2 class="col-11 fw-normal h2 text-center pt-3">Precio del Plan Mensual</h2>
+                <div id="finalPrice" class="col-11 text-center m-3 p-3 h2 border border-2 border-danger rounded-pill">$ 2700,00</div>
+            </div>
+            <div class="row col-6 mx-auto">
+                <button type="submit" class="btn btn-danger rounded-pill mb-3">Enviar</button>
+                <!--<a th:href="@{/form-data}" role="button" onclick="this.parentNode.parentNode.submit();" class="btn btn-danger rounded-pill mb-3">Enviar</a> -->
+            </div>
+            <!-- ===== Final Price End ===== -->
+        </form>
+        <!-- ===== Form End ===== -->
+    </div>
+    <!-- ===== Main Content End ===== -->
+    <!--JS Bootstrap-->
+    <script th:src="@{js/bootstrap.bundle.min.js}"></script>
+    <!-- JS Main -->
+    <script th:src="@{js/main.js}"></script>
+</body>
+</html>
