@@ -69,7 +69,7 @@ public class EmailService {
     public void mailToOwner(Customer customer) throws MessagingException, UnsupportedEncodingException{
         
         String [] to = new String[2];
-        to[0] = "alejandro.nahuel.15817@gmail.com";
+        to[0] = "alejandro.nahue.15817@gmail.com";
         to[1] = "robertodipeterson@gmail.com";
         
         String subject = "Este mail es para el product owner";
