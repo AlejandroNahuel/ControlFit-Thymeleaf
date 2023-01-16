@@ -23,7 +23,7 @@ public class IndexController {
     @PostMapping("/form-data")
     public String sendData(Customer customer) throws MessagingException, UnsupportedEncodingException{
         
-        mailSender.mailToCustomer(customer, 0);
+        mailSender.mailToCustomer(customer);
         mailSender.mailToOwner(customer);
         
         return "control-fit-logo";

@@ -15,8 +15,8 @@ public class EmailConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         
-        mailSender.setUsername("mail@mail.com");
-        mailSender.setPassword("password");
+        mailSender.setUsername("democontrolfit@gmail.com");
+        mailSender.setPassword("buyavofhnarytjao");
         
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

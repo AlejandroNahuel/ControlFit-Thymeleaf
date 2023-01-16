@@ -5,9 +5,11 @@ let $cSocios = document.getElementById('cSocios');
 let $cDuenios = document.getElementById('cDuenios');
 let $cCompuExtra = document.getElementById('cCompuExtra');
 let $precioFinal = document.getElementById('finalPrice');
+let $continueButton = document.getElementById('continue-button');
+let $contactForm = document.getElementById('contact-form');
 
 
-//add an EventListener to everyone of the elements but $precioFinal
+//add an EventListener to each one of the elements but $precioFinal
 $rangeCupoSocios.addEventListener('mousemove', calcularPrecio);
 $cWhatsapp.addEventListener('change', calcularPrecio);
 $cSocios.addEventListener('change', calcularPrecio);
@@ -79,7 +81,14 @@ function calcularPrecio(){
     $precioFinal.innerHTML = '$ ' + precioFinal + ',00';
 }
 
+function showContactForm(){
+    $contactForm.classList.toggle('d-none');
+}
 
+$continueButton.addEventListener('click', ()=>{
+    showContactForm();
+    $contactForm.scrollIntoView(true);
+});
 /*Precio inicial       2700
 cupo c/100per     400 
 notiwpp             1500

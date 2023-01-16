@@ -2,8 +2,6 @@ package com.tridente.calculadoraprecios.service;
 
 import com.tridente.calculadoraprecios.model.Customer;
 import java.io.UnsupportedEncodingException;
-import java.text.NumberFormat;
-import java.util.Currency;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +17,9 @@ public class EmailService {
     private JavaMailSender mailSender;
     
     
-    public void mailToCustomer(Customer customer, double finalPrice) throws MessagingException, UnsupportedEncodingException{
+    public void mailToCustomer(Customer customer) throws MessagingException, UnsupportedEncodingException{
         
-        String subject = "Este mail es para el cliente";
+        String subject = "Usted acaba de seleccionar un plan de servicios en www.controlfitsoftware.com";
         String senderName = "Control Fit";
         String mailContent = "<img src=\"https://www.controlfitsoftware.com/images/logo.png\" alt=\"Control Fit Logo\" style=\"background-color: black;\"/>";
         mailContent+="<h2>Hola, "+ customer.getName() + "!</h2>";
@@ -44,12 +42,7 @@ public class EmailService {
         
         mailContent+="</ul>";
         
-        NumberFormat formatter = NumberFormat.getInstance();
-        formatter.setCurrency(Currency.getInstance("ARS"));
-        formatter.setMinimumFractionDigits(2);
-        String finalPriceStr = formatter.format(finalPrice);
-        
-        mailContent+= "<p>Precio final del plan: AR$"+ finalPriceStr +"</p>";
+        mailContent+= "<p>Precio final del plan: AR$"+ customer.calculateFinalPrice(customer) +"</p>";
         
         mailContent+="<p>Próximamente nos pondremos en contacto!</p>";
         mailContent+="<p>Saludos, <strong>"+senderName+"</strong></p>";
@@ -68,11 +61,14 @@ public class EmailService {
     
     public void mailToOwner(Customer customer) throws MessagingException, UnsupportedEncodingException{
         
+        /*EN ESTE ARRAY DEBEN INDICAR EL NUMERO DE CORREOS DE LOS DUEÑOS DE LA APLICACIÓN POR DEFECTO PUSIMOS 2*/
         String [] to = new String[2];
+        /*ACA VAN LOS MAILS DE LOS DUEÑOS DE LA APLICACIÓN PARA RECIBIRLOS EN SU CASILLA*/
         to[0] = "alejandro.nahue.15817@gmail.com";
         to[1] = "robertodipeterson@gmail.com";
+        /*SI QUIEREN AGREGAR MAS MAILS, DEBEN SEGUIR EL PATRON DE LAS DOS LINEAS DE ARRIBA*/
         
-        String subject = "Este mail es para el product owner";
+        String subject = customer.getName() + " ha seleccionado un plan de servicios";
         String senderName = "Control Fit";
         String mailContent = "<h2>Hola, "+customer.getName()+" ha solicitado el siguiente plan de servicios: </h2>";
         mailContent += "<p><strong>Detalles:</strong></p>";
